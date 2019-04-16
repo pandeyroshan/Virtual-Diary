@@ -8,46 +8,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dear Diary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
     <section class="hero is-primary">
         <div class="hero-body">
-            <div class="container">
+            <div class="container bg-black">
                 <h1 class="title">
-                    Dear Diary
+                    DIARY MANAGER
                 </h1>
             </div>
         </div>
     </section>
 
     <section class="section">
-        <div class="container">
-
-            <article class="media">
-                <div class="media-content">
-                    <div class="content">
-                        <a href="{% url 'add' %}">Add new entry</a>
-                    </div>
-                </div>
-            </article>
+        <div class="container hero-body">
             {% for entry in entries %}
             <article class="media">
                 <div class="media-content">
                     <div class="content">
                         <p>
                             <strong>{{ entry.date_posted }}</strong>
-                            <br> {{ entry.text }}
+                            <br>{{ entry.text }}
                         </p>
                     </div>
                 </div>
             </article>
             {% endfor %}
         </div>
-
     </section>
-    <footer class="footer">
-    </footer>
+    <div class="d-flex justify-content-end">
+        <a href="{% url 'add' %}"><button type="button" class="btn btn-outline-success pull-right mr-3">ADD MOMENT</button></a>
+        <a href="{% url 'reset' %}"><button type="button" class="btn btn-outline-danger pull-right mr-3">RESET DIARY</button></a>
+    </div>
 </body>
 
 </html>
